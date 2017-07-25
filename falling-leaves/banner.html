@@ -21,7 +21,13 @@
 				$("#welcome").
 					delay(5000).
 					fadeIn().
-					delay(10000).
+					delay(3000).
+					animate({fontSize:"45px"}).
+					animate({fontSize:"40px"}).
+					delay(3000).
+					animate({fontSize:"45px"}).
+					animate({fontSize:"40px"}).
+					delay(3000).
 					fadeOut(animate);
 			};
 			$(animate);
@@ -32,7 +38,7 @@
 				var leavesCount = 10;
 				var samples = document.getElementsByClassName("sample");
 				for(i=0;i<leavesCount;i++) {
-					var newNode = samples[i%3].cloneNode();
+					var newNode = samples[i%(samples.length)].cloneNode();
 					samples[0].parentNode.parentNode.appendChild(newNode);
 					leaves[i] = {
 						x:0,y:0,z:1,node:newNode,
@@ -48,7 +54,7 @@
 							this.node.style.zIndex = -Math.floor(10*this.z);
 						},
 						move: function() {
-							var speed = 0.5/this.z;
+							var speed = 2.0/this.z;
 							this.y+=speed;
 							if (this.y>(bottom+maxSize/this.z)) {
 								this.relocate();
@@ -62,7 +68,7 @@
 						leaves[i].move();
 						leaves[i].render();
 					}
-				},20);
+				},50);
 			});
 			</script>
 			<div style=" display:none; font-size:40px;font-weight:bold; color: #000; line-height: 50px;font-family: sans-serif" id="letoceny">
