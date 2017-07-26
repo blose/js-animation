@@ -1,89 +1,90 @@
 <html>
 	<body>
-		<div style="position:relative; width:1000px; height: 50px; overflow: hidden; margin: auto;background-color:#ff0; z-index:-200; ">
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-			<script>
-			function animate() {
-				$("#leto").
-					css("fontSize","20px").
-					css("paddingLeft","500px").
-					animate({fontSize:"40px"}).
-					animate({paddingLeft:"180px"},{duration:1000});
-				$("#cp").
-					hide().
-					delay(1500).
-					fadeIn();
-				$("#letoceny").
-					css("paddingTop","0px").
-					show().			
-					delay(4500).
-					animate({paddingTop:"50px"},{duration:1000});				
-				$("#welcome").
-					delay(5000).
-					fadeIn().
-					delay(3000).
-					animate({fontSize:"45px"}).
-					animate({fontSize:"40px"}).
-					delay(3000).
-					animate({fontSize:"45px"}).
-					animate({fontSize:"40px"}).
-					delay(3000).
-					fadeOut(animate);
-			};
-			$(animate);
-			$(function() {
-				bottom = 50;
-				maxSize = 65;
-				leaves = [];
-				var leavesCount = 10;
-				var samples = document.getElementsByClassName("sample");
-				for(i=0;i<leavesCount;i++) {
-					var newNode = samples[i%(samples.length)].cloneNode();
-					samples[0].parentNode.parentNode.appendChild(newNode);
-					leaves[i] = {
-						x:0,y:0,z:1,node:newNode,
-						relocate: function() {
-							this.z = Math.floor(1+Math.random()*3);
-							this.x = Math.floor(Math.random()*1000);
-							this.y = -maxSize/this.z*(1+Math.random()*0.5);
-						},
-						render:function() {
-							this.node.style.top = this.y;
-							this.node.style.left = this.x;
-							this.node.style.height = maxSize/this.z;
-							this.node.style.zIndex = -Math.floor(10*this.z);
-						},
-						move: function() {
-							var speed = 2.0/this.z;
-							this.y+=speed;
-							if (this.y>(bottom+maxSize/this.z)) {
-								this.relocate();
-							}
-						}
-					};
-					leaves[i].relocate();
-				}
-				window.setInterval(function() {
+		<a href="http://stemlab.by/leto2017grodno/">
+			<div style="position:relative; width:1000px; height: 50px; overflow: hidden; margin: auto;background-color:#ff0; z-index:-200; ">
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+				<script>
+				function animate() {
+					$("#leto").
+						css("fontSize","20px").
+						css("paddingLeft","500px").
+						animate({fontSize:"40px"}).
+						animate({paddingLeft:"180px"},{duration:1000});
+					$("#cp").
+						hide().
+						delay(1500).
+						fadeIn();
+					$("#letoceny").
+						css("paddingTop","0px").
+						show().			
+						delay(4500).
+						animate({paddingTop:"50px"},{duration:1000});				
+					$("#welcome").
+						delay(5000).
+						fadeIn().
+						delay(3000).
+						animate({fontSize:"45px"}).
+						animate({fontSize:"40px"}).
+						delay(3000).
+						animate({fontSize:"45px"}).
+						animate({fontSize:"40px"}).
+						delay(3000).
+						fadeOut(animate);
+				};
+				$(animate);
+				$(function() {
+					bottom = 50;
+					maxSize = 65;
+					leaves = [];
+					var leavesCount = 10;
+					var samples = document.getElementsByClassName("sample");
 					for(i=0;i<leavesCount;i++) {
-						leaves[i].move();
-						leaves[i].render();
+						var newNode = samples[i%(samples.length)].cloneNode();
+						samples[0].parentNode.parentNode.appendChild(newNode);
+						leaves[i] = {
+							x:0,y:0,z:1,node:newNode,
+							relocate: function() {
+								this.z = Math.floor(1+Math.random()*3);
+								this.x = Math.floor(Math.random()*1000);
+								this.y = -maxSize/this.z*(1+Math.random()*0.5);
+							},
+							render:function() {
+								this.node.style.top = this.y;
+								this.node.style.left = this.x;
+								this.node.style.height = maxSize/this.z;
+								this.node.style.zIndex = -Math.floor(10*this.z);
+							},
+							move: function() {
+								var speed = 2.0/this.z;
+								this.y+=speed;
+								if (this.y>(bottom+maxSize/this.z)) {
+									this.relocate();
+								}
+							}
+						};
+						leaves[i].relocate();
 					}
-				},50);
-			});
-			</script>
-			<div style=" display:none; font-size:40px;font-weight:bold; color: #000; line-height: 50px;font-family: sans-serif" id="letoceny">
-				<span id="leto" >керн сундхр -</span>
-				<span id="cp" style="padding-left:50px;">жемш оюдючр</span>
-			<div>
-			<div id="welcome" style="display:none; position:absolute; top:0px; font-size:40px;font-weight:bold; color: #000; line-height: 50px;font-family: sans-serif; text-align: center; width:100%">
-				цнрнбхляъ й ьйнке б ярелкюа!
+					window.setInterval(function() {
+						for(i=0;i<leavesCount;i++) {
+							leaves[i].move();
+							leaves[i].render();
+						}
+					},50);
+				});
+				</script>
+				<div style=" display:none; font-size:40px;font-weight:bold; color: #000; line-height: 50px;font-family: sans-serif" id="letoceny">
+					<span id="leto" >керн сундхр -</span>
+					<span id="cp" style="padding-left:50px;">жемш оюдючр</span>
+				<div>
+				<div id="welcome" style="display:none; position:absolute; top:0px; font-size:40px;font-weight:bold; color: #000; line-height: 50px;font-family: sans-serif; text-align: center; width:100%">
+					цнрнбхляъ й ьйнке б ярелкюа!
+				</div>
+				<div style="display:none">
+					<img src='list1.png' style='position:absolute; opacity:0.5; top:0px; left: 0px' class="sample"/>
+					<img src='list2.png' style='position:absolute; opacity:0.5; top:0px; left: 0px' class="sample"/>
+					<img src='list3.png' style='position:absolute; opacity:0.5; top:0px; left: 0px' class="sample"/>
+				</div>
 			</div>
-			<div style="display:none">
-				<img src='list1.png' style='position:absolute; opacity:0.5; top:0px; left: 0px' class="sample"/>
-				<img src='list2.png' style='position:absolute; opacity:0.5; top:0px; left: 0px' class="sample"/>
-				<img src='list3.png' style='position:absolute; opacity:0.5; top:0px; left: 0px' class="sample"/>
-			</div>
-		</div>
-
+		</a>
 	</body>
 </html>
