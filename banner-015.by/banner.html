@@ -2,41 +2,38 @@
 <html>
     <head>
         <style>
-            body {margin: 0px;width: 1230px; height: 80px;border: 1px solid black;background-color:pink}
+            body {margin: 0px;}
             .slider { width: 1230px; height: 80px;}
             .slide    { display: none; position: relative;}
             .slide img {position: absolute; top: 0px; left:0px;}
         </style>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>
-            timings = [1300,1300,1300];
+            timings = [3100,3600,6300];
+			fadeDelay = 200;
             var animations = [];
             function makeAnimation(i) {
                 return function(){
                     var num = i; 
                     $(".slide:nth-child("+(num+1)+")")
-                        .fadeIn(100)
+                        .fadeIn(fadeDelay)
                         .delay(timings[num])
                         .show(1,
                             animations[(num+1)%3])
-                        .delay(100)
-                        .fadeOut(100);
-
+                        .delay(fadeDelay)
+                        .fadeOut(fadeDelay);
                 }
             }
-
             for(i=0;i<3;i++) {
                 animations.push(
                     makeAnimation(i)
-
                 );
             }
-            console.log(animations);
             $(animations[0]);
         </script>
     </head>
     <body>
-        <a href="http://stemlab.by/grodno">
+        <a href="http://stemlab.by/grodno?l=15">
             <div class="slider" >
                 <div class="slide">
                     <img src="banner-left.png"/>
